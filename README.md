@@ -30,7 +30,7 @@ grub-install --target=x86_64-efi --efi-directory=/mnt/esp --boot-directory=/mnt/
 ```
 2. Replace the contents of grub.cfg on the ESP partition with the grub.cfg in the repo's' ESP partition folder.  All this file does is configure grub to load the "referential" grub.cfg on the second partition.  Don't forget to change the UUID field accordingly!
 3. Copy new ISOs onto the second partition
-4. (See "Other Features") If you want to chainload any boot loaders on your host hard drive, replace __HOSTUUID__ in the referential grub.cfg with the UUID of your host's ESP partition.
+4. If you want to chainload any boot loaders on your host hard drive, see "Other Features," below.
 5. Reboot to the external drive, and test!
 
 ## Other Features
