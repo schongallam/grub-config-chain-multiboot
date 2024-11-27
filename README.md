@@ -39,13 +39,19 @@ A "Host" submenu example is provided in grub.cfg for chainloading other bootload
 
 ## Known Issues
 
-- ParrotOS (tested with Security Edition, 6.1)
-- - In ParrotOS' native grub menu, you must edit the boot command to add `findiso=$iso_path` argument to the kernel line.
-- - - i.e., highlight "Try / Install" or another boot option, and press 'e' to enter the grub editor.
-- - - If you don't, you'll get the kernel error on boot: "Unable to find a medium containing a live file system."
-- - - This distro does not use lupin-casper, and has no `iso-scan/filename' kernel parameter.
-- - Native grub also fails to load memtest (invokes `linux /live/memtest` but the files present are `memtest.bin` and `memtest.efi`).
-- The above ISO issue likely affects other distros which lack a robust boot-from-ISO implementation.
+- Some distros require manual editing of the boot command during a grub session.
+  - i.e., highlight "Try / Install" or another boot option, and press 'e' to enter the grub editor.
+  - If you don't, you'll get a kernel error on boot: "Unable to find a medium containing a live file system."
+  - Distros that don't use lupin-casper cannot accept an `iso-scan/filename` kernel parameter, and require `findiso` instead.
+- Tested distros:
+  - ParrotOS (tested with Security Edition, 6.1)
+    - Edit the boot command to add `findiso=$iso_path` argument to the kernel line.
+  - Tails (tested, 6.9)
+    - Use the "External Hard Disk" boot option, or ensure `live-media=removable` is removed from kernel line.
+    - Add `findiso=$iso_path` argument to the kernel line.
+    - Remove `FSUUID=${rootuuid}` from the kernel line.
+  - Other distros lacking robust boot-from-ISO implementation likely require similar editing at boot time.
+- Native grub also fails to load memtest (invokes `linux /live/memtest` but the files present are `memtest.bin` and `memtest.efi`).
 
 ## FAQ
 
