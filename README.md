@@ -2,7 +2,9 @@
 
 ## About
 
-This repository describes a relatively simple way to set up an external drive with multiple linux live ISO files, and boot into a selected OS from grub.  Technically, no chainloading is required.  No direct knowledge of any linux kernels or initrd locations is required, either, as long as the ISO contains its own loopback.cfg or grub.cfg file.  Example files are provided, but modifications MUST be made for it to actually work on your system.  It will not work straight "out of the box," and no automated configuration method is provided here.  This method assumes you are using x86_64 architecture, adjust as needed.  Use at your own risk.
+This repository describes a relatively simple way to set up an external drive with multiple linux live ISO files, and boot into a selected OS from grub.  Technically, no chainloading is required.  In most cases, no direct knowledge of any linux kernels or initrd locations is required, either, as long as the ISO contains its own loopback.cfg or grub.cfg file.*  Example files are provided, but modifications MUST be made for it to actually work on your system.  It will not work straight "out of the box," and no automated configuration method is provided here.  This method assumes you are using x86_64 architecture, adjust as needed.  Use at your own risk.
+
+*Some kernels require modification of grub's `kernel` line to help the kernel find the ISO file system / squashfs.  See "Known Issues," below.
 
 ## Requirements
 
